@@ -1,9 +1,8 @@
 # AWS Service Provider for Silex
 
-[![Latest Stable Version](https://poser.pugx.org/aws/aws-sdk-php-silex/v/stable.png)](https://packagist.org/packages/aws/aws-sdk-php-silex)
-[![Total Downloads](https://poser.pugx.org/aws/aws-sdk-php-silex/downloads.png)](https://packagist.org/packages/aws/aws-sdk-php-silex)
+A simple Cilex service provider for including the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php).
 
-A simple Silex service provider for including the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php).
+This is literally just a version of the [AWS Silex Provider](https://github.com/aws/aws-sdk-php-silex) modified for Cilex.
 
 ## Installation
 

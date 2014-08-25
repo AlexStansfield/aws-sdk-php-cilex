@@ -14,10 +14,10 @@
  * permissions and limitations under the License.
  */
 
-namespace Aws\Silex\Tests;
+namespace Aws\Cilex\Tests;
 
-use Aws\Silex\AwsServiceProvider;
-use Silex\Application;
+use Aws\Cilex\AwsServiceProvider;
+use Cilex\Application;
 
 /**
  * AwsServiceProvider test cases
@@ -26,7 +26,7 @@ class AwsServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterAwsServiceProvider()
     {
-        // Setup the Silex app and AWS service provider
+        // Setup the Cilex app and AWS service provider
         $app = new Application();
         $provider = new AwsServiceProvider();
         $app->register($provider, array(
@@ -35,7 +35,6 @@ class AwsServiceProviderTest extends \PHPUnit_Framework_TestCase
                 'secret' => 'your-aws-secret-access-key',
             )
         ));
-        $provider->boot($app);
 
         // Get an instance of a client (S3) to use for testing
         $s3 = $app['aws']->get('s3');
@@ -46,11 +45,11 @@ class AwsServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('your-aws-access-key-id', $s3->getCredentials()->getAccessKeyId());
         $this->assertEquals('your-aws-secret-access-key', $s3->getCredentials()->getSecretKey());
 
-        // Make sure the user agent contains "Silex"
+        // Make sure the user agent contains "Cilex"
         $command = $s3->getCommand('ListBuckets');
         $request = $command->prepare();
         $s3->dispatch('command.before_send', array('command' => $command));
-        $this->assertRegExp('/.+Silex\/.+/', (string) $request->getHeader('User-Agent'));
+        $this->assertRegExp('/.+Cilex\/.+/', (string) $request->getHeader('User-Agent'));
     }
 
     /**
@@ -58,11 +57,10 @@ class AwsServiceProviderTest extends \PHPUnit_Framework_TestCase
      */
     public function testNoConfigProvided()
     {
-        // Setup the Silex app and AWS service provider
+        // Setup the Cilex app and AWS service provider
         $app = new Application();
         $provider = new AwsServiceProvider();
         $app->register($provider);
-        $provider->boot($app);
 
         // Instantiate a client and get the access key, which should trigger an exception trying to use IAM credentials
         $s3 = $app['aws']->get('s3');

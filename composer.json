@@ -1,23 +1,26 @@
 {
-    "name": "aws/aws-sdk-php-silex",
+    "name": "alexstansfield/aws-sdk-php-cilex",
     "homepage": "http://aws.amazon.com/sdkforphp2",
-    "description": "A simple Silex service provider for including the AWS SDK for PHP.",
-    "keywords": ["silex","aws","amazon","sdk","s3","ec2","dynamodb"],
+    "description": "A simple Cilex service provider for including the AWS SDK for PHP. Literally just a tweaked version of the original AWS Silex provider",
+    "keywords": ["cilex","aws","amazon","sdk","s3","ec2","dynamodb"],
     "type":"library",
     "license":"Apache-2.0",
     "authors":[
         {
             "name":"Amazon Web Services",
             "homepage":"http://aws.amazon.com"
+        },
+        {
+            "name":"Alex Stansfield"
         }
     ],
     "require": {
         "php": ">=5.3.3",
         "aws/aws-sdk-php": "2.*",
-        "silex/silex": "1.*"
+        "cilex/cilex": "1.*"
     },
     "autoload": {
-        "psr-0": { "Aws\\Silex": "src/" }
+        "psr-0": { "Aws\\Cilex": "src/" }
     },
     "extra": {
         "branch-alias": {

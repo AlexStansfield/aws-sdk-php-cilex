@@ -14,17 +14,17 @@
  * permissions and limitations under the License.
  */
 
-namespace Aws\Silex;
+namespace Aws\Cilex;
 
 use Aws\Common\Aws;
 use Aws\Common\Client\UserAgentListener;
 use Guzzle\Common\Event;
 use Guzzle\Service\Client;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Cilex\Application;
+use Cilex\ServiceProviderInterface;
 
 /**
- * AWS SDK for PHP service provider for Silex applications
+ * AWS SDK for PHP service provider for Cilex applications
  */
 class AwsServiceProvider implements ServiceProviderInterface
 {
@@ -37,11 +37,11 @@ class AwsServiceProvider implements ServiceProviderInterface
             $config = isset($app['aws.config']) ? $app['aws.config'] : array();
             $aws = Aws::factory($config);
 
-            // Attach an event listener that will append the Silex version number in the user agent string
+            // Attach an event listener that will append the Cilex version number in the user agent string
             $aws->getEventDispatcher()->addListener('service_builder.create_client', function (Event $event) {
                 $clientConfig = $event['client']->getConfig();
                 $commandParams = $clientConfig->get(Client::COMMAND_PARAMS) ?: array();
-                $userAgentData = 'Silex/' . Application::VERSION . ' SXMOD/' . AwsServiceProvider::VERSION;
+                $userAgentData = 'Cilex/' . Application::VERSION . ' SXMOD/' . AwsServiceProvider::VERSION;
                 $clientConfig->set(Client::COMMAND_PARAMS, array_merge_recursive($commandParams, array(
                     UserAgentListener::OPTION => $userAgentData
                 )));
@@ -49,9 +49,5 @@ class AwsServiceProvider implements ServiceProviderInterface
 
             return $aws;
         });
-    }
-
-    public function boot(Application $app)
-    {
     }
 }
