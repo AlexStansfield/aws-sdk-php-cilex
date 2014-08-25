@@ -1,25 +1,12 @@
-# AWS Service Provider for Silex
+# AWS Service Provider for Cilex
 
 A simple Cilex service provider for including the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php).
 
-This is literally just a version of the [AWS Silex Provider](https://github.com/aws/aws-sdk-php-silex) modified for Cilex.
-
-## Installation
-
-The AWS Service Provider can be installed via [Composer](http://getcomposer.org) by requiring the
-`aws/aws-sdk-php-silex` package in your project's `composer.json`.
-
-```json
-{
-    "require": {
-        "aws/aws-sdk-php-silex": "1.*"
-    }
-}
-```
+This is literally just a version of the [AWS Silex Provider](http://github.com/aws/aws-sdk-php-silex) modified for Cilex.
 
 ## Usage
 
-Register the AWS Service Provider in your Silex application and provide your AWS SDK for PHP configuration to the app
+Register the AWS Service Provider in your Cilex application and provide your AWS SDK for PHP configuration to the app
 in the `aws.config` key. `$app['aws.config']` should contain an array of configuration options or the path to a
 configuration file. This value is passed directly into `Aws\Common\Aws::factory()`.
 
@@ -28,8 +15,8 @@ configuration file. This value is passed directly into `Aws\Common\Aws::factory(
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Aws\Silex\AwsServiceProvider;
-use Silex\Application;
+use Aws\Cilex\AwsServiceProvider;
+use Cilex\Application;
 
 $app = new Application();
 
@@ -62,8 +49,8 @@ $app->run();
 
 ## Links
 
+* [AWS Silex Provider](http://github.com/aws/aws-sdk-php-silex)
 * [AWS SDK for PHP on Github](http://github.com/aws/aws-sdk-php)
 * [AWS SDK for PHP website](http://aws.amazon.com/sdkforphp/)
 * [AWS on Packagist](https://packagist.org/packages/aws)
 * [License](http://aws.amazon.com/apache2.0/)
-* [Silex website](http://silex.sensiolabs.org)
